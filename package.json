@@ -1,0 +1,25 @@
+{
+  "name": "ajssdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "demo.js",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soudny/AJSS2018Node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Soudny/AJSS2018Node/issues"
+  },
+  "homepage": "https://github.com/Soudny/AJSS2018Node#readme"
+}
