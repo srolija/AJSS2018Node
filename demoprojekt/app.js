@@ -3,12 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var blockRouter = require('./routes/block');
 
 var app = express();
+
+const db = mongoose.connect('mongodb://axilis:axilis@ds119070.mlab.com:19070/jsschool2018node')
+  .then(() => {
+    console.info('Successfully connected to MONGO database');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
