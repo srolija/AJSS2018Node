@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 import Navigation from './components/Navigation';
 import NoMatch from './components/NoMatch';
@@ -9,23 +10,24 @@ import BW from './components/BW';
 export default class App extends Component {
 
 	state = {
-		colorMatrix: [
-			['FF0000', '00FF00', '0000FF', 'FF00FF', 'F0F0F0'],
-			['FF0000', '00FF00', '0000FF', 'FF00FF', 'F0F0F0'],
-			['FF0000', '00FF00', '0000FF', 'FF00FF', 'F0F0F0'],
-			['FF0000', '00FF00', '0000FF', 'FF00FF', 'F0F0F0'],
-			['FF0000', '00FF00', '0000FF', 'FF00FF', 'F0F0F0']
-		],
+		colorMatrix: [[]],
 		colorPicker: ['FF0000', '00FF00', '0000FF', 'FF00FF', 'F0F0F0'],
 		activeColor: 'FFFFFF'
+	}
+
+	async componentDidMount() {
+		const matrix = await axios.get('/block/rgbMatrix');
+		this.setState({ colorMatrix: matrix.data });
 	}
 
 	selectColor = (color) => {
 		this.setState({ activeColor: color });
 	}
 
-	setColor = (row, column) => {
+	setColor = async (row, column) => {
 		const { colorMatrix, activeColor } = this.state;
+
+		await axios.post('/block/color', { x: row, y: column, color: activeColor });
 
 		const newMatrix = colorMatrix.slice();
 		newMatrix[row][column] = activeColor;
