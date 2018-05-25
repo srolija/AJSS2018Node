@@ -20,7 +20,7 @@ router.get('/rgbMatrix', async (req, res, next) => {
  * color example: 'FFFFFF'
  */
 router.post('/color', async (req, res, next) => {
-	throw new Error("Test");
+	throw new Error("If it crashes it works! :)");
 });
 
 module.exports = router;
