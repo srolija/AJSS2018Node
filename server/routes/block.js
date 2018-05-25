@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const COLOR = (process.env.NODE_ENV === 'production') ? '000000' : 'FF0000';
 
 /**
  * GET color blocks
@@ -8,7 +9,7 @@ const router = express.Router();
  * returns: [[colorHex]]
  */
 router.get('/rgbMatrix', async (req, res, next) => {
-	res.json([['000000']])
+	res.json([[COLOR]])
 });
 
 /**
@@ -18,6 +19,8 @@ router.get('/rgbMatrix', async (req, res, next) => {
  * body: { x: number, y: number, color: string }
  * color example: 'FFFFFF'
  */
-
+router.post('/color', async (req, res, next) => {
+	throw new Error("Test");
+});
 
 module.exports = router;

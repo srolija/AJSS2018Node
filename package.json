@@ -2,15 +2,30 @@
   "name": "ajssdemo",
   "version": "1.0.0",
   "description": "",
-  "main": "demo.js",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "pm2": "^2.10.4",
+    "raven": "^2.6.2",
+    "rimraf": "^2.6.2"
   },
   "devDependencies": {
     "nodemon": "^1.17.4"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules",
+    "server/node_modules"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "cd client && npm install && cd ../server && npm install",
+    "clean": "npm run clean-client",
+    "clean-client": "cd client && rimraf ./build",
+    "cstart": "cd client && node ./node_modules/.bin/react-scripts start",
+    "sstart": "cd server && node ../node_modules/.bin/nodemon",
+    "build-client": "npm run clean-client && cd client && node ./node_modules/.bin/react-scripts build",
+    "heroku-postbuild": "npm run build",
+    "build": "npm run build-client",
+    "start": "node pm2"
   },
   "repository": {
     "type": "git",
