@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const COLOR = (process.env.NODE_ENV === 'production') ? '000000' : 'FF0000';
+const COLOR = (process.env.NODE_ENV === 'production') ? '00FFFF' : 'FF0000';
 
 /**
  * GET color blocks

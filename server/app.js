@@ -30,6 +30,7 @@ app.set('view engine', 'jade');
 
 // The request handler must be the first middleware on the app
 app.use(Raven.requestHandler());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
